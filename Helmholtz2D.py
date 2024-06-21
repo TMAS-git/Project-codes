@@ -90,7 +90,7 @@ if __name__ == '__main__':
     error_f = np.linalg.norm(f_star - f_pred, 2) / np.linalg.norm(f_star, 2)
 
     print('Relative L2 error_u: {:.2e}'.format(error_u))
-    print('Relative L2 error_u: {:.2e}'.format(error_f))
+    print('Relative L2 error_f: {:.2e}'.format(error_f))
 
     ### Plot ###
 
@@ -183,7 +183,7 @@ if __name__ == '__main__':
                      kde_kws={"shade": False},
                      norm_hist=True, label=r'$\nabla_\theta \mathcal{L}_r$')
       
-        ax.get_legend().remove()
+        #ax.get_legend().remove()
         ax.set_xlim([-3.0, 3.0])
         ax.set_ylim([0,100])
         cnt += 1
