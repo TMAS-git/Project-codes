@@ -8,7 +8,7 @@ from Helmholtz2D_model_tf import Sampler, Helmholtz2D
 if __name__ == '__main__':
     
     a_1 = 1
-    a_2 = 4
+    a_2 = 4    # for non-stiff case, choose a_2 = 1
     
     def u(x, a_1, a_2):
         return np.sin(a_1 * np.pi * x[:, 0:1]) * np.sin(a_2 * np.pi * x[:, 1:2])
