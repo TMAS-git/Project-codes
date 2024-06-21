@@ -26,7 +26,7 @@ class Helmholtz2D:
         self.mu_x1, self.sigma_x1 = self.mu_X[0], self.sigma_X[0]
         self.mu_x2, self.sigma_x2 = self.mu_X[1], self.sigma_X[1]
         
-        self.lambda_weight=1e-5
+        self.lambda_weight=1.5 # here you enter the value of the hyperparameter lambda for starting the training
         self.k = 50  # Example value for k, you can adjust this as needed
        
 
@@ -312,7 +312,7 @@ class Helmholtz2D:
 
             #update the lambda_weight parameter
             if it == self.k+1:
-               self.lambda_weight=1
+               self.lambda_weight=10  # Assign the value that the hyperparameter lambda should have for the rest of the training after k epochs.
 
             # Define a dictionary for associating placeholders with data
             tf_dict = {self.x1_bc1_tf: X_bc1_batch[:, 0:1], self.x2_bc1_tf: X_bc1_batch[:, 1:2],
@@ -359,7 +359,7 @@ class Helmholtz2D:
                                                  + self.beta * self.adaptive_constant_val
                 self.adpative_constant_log.append(self.adaptive_constant_val)
 
-                print('It: %d, Loss: %.3e, Loss_bcs: %.3e, Loss_res: %.3e, Adaptive_Constant: %.2f, self.lambda_weight: %.3e} ,Time: %.2f' %
+                print('It: %d, Loss: %.3e, Loss_bcs: %.3e, Loss_res: %.3e, Adaptive_Constant: %.2f, self.lambda_weight: %.2f} ,Time: %.2f' %
                       (it, loss_value, loss_bcs_value, loss_res_value, self.adaptive_constant_val, self.lambda_weight, elapsed))
                 start_time = timeit.default_timer()
 
